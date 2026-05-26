@@ -1,0 +1,47 @@
+{
+  "name": "@beratiyilik/ts-utils",
+  "version": "0.0.0",
+  "description": "Universal TypeScript utilities",
+  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "vitest run",
+    "lint": "eslint .",
+    "check:publint": "publint",
+    "check:attw": "echo 'TODO: attw incompatible with Node 22 (untar.js DecompressionStream bug); fix: attw --pack . && rm *.tgz'",
+    "clean": "rm -rf dist node_modules .turbo *.tgz *.tsbuildinfo",
+    "prepublishOnly": "pnpm build && pnpm check:publint && pnpm check:attw"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/beratiyilik/ts-libs.git",
+    "directory": "packages/ts-utils"
+  },
+  "homepage": "https://github.com/beratiyilik/ts-libs/tree/main/packages/ts-utils#readme",
+  "bugs": {
+    "url": "https://github.com/beratiyilik/ts-libs/issues"
+  },
+  "author": "Berat Iyilik",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "devDependencies": {
+    "@arethetypeswrong/cli": "^0.17.4",
+    "publint": "^0.3.21",
+    "typescript": "^5.9.3",
+    "vitest": "^4.1.7"
+  }
+}
