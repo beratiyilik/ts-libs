@@ -5,6 +5,11 @@
       "dependsOn": ["^build"],
       "outputs": ["dist/**"]
     },
+    "dev": {
+      "dependsOn": ["^build"],
+      "persistent": true,
+      "cache": false
+    },
     "test": { "dependsOn": ["^build"] },
     "lint": {},
     "typecheck": { "dependsOn": ["^build"] },

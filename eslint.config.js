@@ -14,11 +14,11 @@ export default tseslint.config(
           patterns: [
             {
               group: ["**/internal/*", "**/internal"],
-              message: "Internal modules are not part of the public API."
-            }
-          ]
-        }
-      ]
-    }
-  }
+              message: "Internal modules are not part of the public API.",
+            },
+          ],
+        },
+      ],
+    },
+  },
 );

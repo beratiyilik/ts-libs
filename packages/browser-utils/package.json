@@ -1,5 +1,5 @@
 {
-  "name": "@beratiyilik/ts-utils",
+  "name": "@beratiyilik/browser-utils",
   "version": "0.0.0",
   "description": "Universal TypeScript utilities",
   "type": "module",
@@ -30,9 +30,9 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/beratiyilik/ts-libs.git",
-    "directory": "packages/ts-utils"
+    "directory": "packages/browser-utils"
   },
-  "homepage": "https://github.com/beratiyilik/ts-libs/tree/main/packages/ts-utils#readme",
+  "homepage": "https://github.com/beratiyilik/ts-libs/tree/main/packages/browser-utils#readme",
   "bugs": {
     "url": "https://github.com/beratiyilik/ts-libs/issues"
   },
@@ -44,8 +44,12 @@
   },
   "devDependencies": {
     "@arethetypeswrong/cli": "^0.18.2",
+    "jsdom": "^29.1.1",
     "publint": "^0.3.21",
     "typescript": "^6.0.3",
     "vitest": "^4.1.7"
+  },
+  "dependencies": {
+    "@beratiyilik/ts-utils": "workspace:*"
   }
 }
