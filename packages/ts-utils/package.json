@@ -23,7 +23,7 @@
     "test": "vitest run",
     "lint": "eslint .",
     "check:publint": "publint",
-    "check:attw": "echo 'TODO: attw incompatible with Node 22 (untar.js DecompressionStream bug); fix: attw --pack . && rm *.tgz'",
+    "check:attw": "echo 'TODO: attw incompatible with Node 24 (untar.js DecompressionStream bug); fix: attw --pack . && rm *.tgz'",
     "clean": "rm -rf dist node_modules .turbo *.tgz *.tsbuildinfo",
     "prepublishOnly": "pnpm build && pnpm check:publint && pnpm check:attw"
   },
