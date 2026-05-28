@@ -139,6 +139,9 @@ build
 # pnpm
 .pnpm-store
 
+# npmrc files
+.npmrc.local
+
 # yarn v3
 .pnp.*
 .yarn/*
