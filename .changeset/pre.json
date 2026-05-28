@@ -1,0 +1,11 @@
+{
+  "mode": "pre",
+  "tag": "alpha",
+  "initialVersions": {
+    "@beratiyilik/browser-utils": "0.0.0",
+    "@beratiyilik/ts-utils": "0.0.0"
+  },
+  "changesets": [
+    "tired-buckets-melt"
+  ]
+}

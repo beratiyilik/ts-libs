@@ -1,6 +1,6 @@
 {
   "name": "@beratiyilik/browser-utils",
-  "version": "0.0.0",
+  "version": "0.1.0-alpha.0",
   "description": "Universal TypeScript utilities",
   "type": "module",
   "sideEffects": false,
@@ -27,6 +27,9 @@
     "clean": "rm -rf dist node_modules .turbo *.tgz *.tsbuildinfo",
     "prepublishOnly": "pnpm build && pnpm check:publint && pnpm check:attw"
   },
+  "dependencies": {
+    "@beratiyilik/ts-utils": "workspace:*"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/beratiyilik/ts-libs.git",
@@ -48,8 +51,5 @@
     "publint": "^0.3.21",
     "typescript": "^6.0.3",
     "vitest": "^4.1.7"
-  },
-  "dependencies": {
-    "@beratiyilik/ts-utils": "workspace:*"
   }
 }
