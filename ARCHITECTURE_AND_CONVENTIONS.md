@@ -1,52 +1,51 @@
-# ts-libs — Specifications
+# ts-libs Architecture & Conventions
+
+## Overview
+
+`@scope/<pkg>` — a TypeScript-first, ESM-only, tree-shakeable utility library; universal / isomorphic (Node.js + browser). Minimal, side-effect-free helpers for string, array, object, date, and type-guard operations.
+
+## Goals
+
+- minimal, single-purpose helpers — add only what is needed
+- independent and fully controlled — no reliance on broad third-party utility packages
+- tree-shakeable, side-effect-free foundational layer reusable across projects
+
+## Non-Goals
+
+- CommonJS output
+- polyfills
+- framework-specific wrappers
+- CLI tooling, and CLI users as a target consumer
+- plugin system
+- multi-runtime-specific optimizations
 
 ## Project Structure
 
 - repo: `ts-libs` — monorepo, `packages/*` convention
+- repo boundary: `ts-libs` and `react-libs` are separate git repositories; `react-libs` is an external consumer, out of scope for this document
 - package naming: `@scope/<pkg-name>` — no prefix redundancy (e.g. no `@scope/ts-libs-<pkg-name>`)
 - monorepo tooling: pnpm workspaces + turborepo
 
-```
-ts-libs/
-  ts-utils/
-  node-utils/
-  browser-utils/
+### Packages
 
-react-libs/
-  react-utils/
-  react-components/
-  react-table/
-```
+| package | depends on |
+|---|---|
+| `ts-utils` | none |
+| `node-utils` | `ts-utils` |
+| `browser-utils` | `ts-utils` |
 
-Intra-repo dependency graph:
+### Intra-repo dependency graph
 
 ```
-ts-utils            → (none)
-node-utils          → ts-utils
-browser-utils       → ts-utils
-react-utils         → browser-utils (ts-utils transitively)
-react-components    → react-utils (browser-utils, ts-utils transitively)
-react-table         → react-components (react-utils, browser-utils, ts-utils transitively)
-```
-
-```
-node-utils
-└── ts-utils
-
-browser-utils
-└── ts-utils
-
-react-table
-└── react-components
-    └── react-utils
-        └── browser-utils
-            └── ts-utils
+ts-utils
+├── node-utils
+└── browser-utils
 ```
 
 ## Runtime & Compatibility
 
 - runtime support: universal / isomorphic package
-- runtime compatibility: Node.js 22+ (active LTS), browsers per baseline above; bundlers with `exports` field support (webpack 5, Vite, Rollup) for downstream consumers
+- runtime compatibility: Node.js 24+ (active LTS), browsers per baseline above; bundlers with `exports` field support (webpack 5, Vite, Rollup) for downstream consumers
 - browser baseline: ES2024-capable engines (Chrome 119+, Firefox 121+, Safari 17.4+)
 - framework integration: framework-agnostic — TypeScript-first, zero framework dependencies
 
@@ -68,7 +67,7 @@ react-table
 ## Dependencies
 
 - dependencies: zero or strictly minimal, well-maintained, single-purpose — no bloated or multi-purpose packages; direct dependencies only, no deep imports into dependency internals (e.g. no `lodash/fp/curry`-style paths)
-- side effects: strict zero — `"sideEffects": false`, no global mutations, no polyfills; CI guard if any side-effectful module is later introduced
+- side effects: strict zero — `"sideEffects": false`, no global mutations, no polyfills
 
 ## Build
 
@@ -81,10 +80,16 @@ react-table
 
 - lint/format: ESLint + Prettier
 - test: Vitest
-- publish validation: `publint` + `@arethetypeswrong/cli` in CI
+
+## CI
+
+- pipeline (per PR): install (pnpm) → lint (ESLint) → format check (Prettier) → type check (`tsc --noEmit`) → test (Vitest) → build (`tsc` build)
+- publish validation gate: `publint` + `@arethetypeswrong/cli`
+- side-effect guard: fail the build if any module introduces top-level side effects
+- release/publish job: Changesets version-PR merge triggers `npm publish` with `--provenance`
 
 ## Release
 
-- distribution: npm publish, public, scoped, with `--provenance` enabled in CI
-- versioning: strict SemVer (MAJOR.MINOR.PATCH)
+- distribution: npm publish, public, scoped (provenance attached in the CI release job)
+- versioning: strict SemVer (MAJOR.MINOR.PATCH); pre-release path: `alpha → beta → rc → stable`
 - release automation: Changesets — per-package independent versioning, automated SemVer bumps via PR-based workflow, changelog generation, npm publish triggered on version PR merge
