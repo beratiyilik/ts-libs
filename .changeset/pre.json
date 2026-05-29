@@ -5,5 +5,8 @@
     "@beratiyilik/browser-utils": "0.0.0",
     "@beratiyilik/ts-utils": "0.0.0"
   },
-  "changesets": ["tired-buckets-melt"]
+  "changesets": [
+    "free-peas-stare",
+    "swift-maps-walk"
+  ]
 }
