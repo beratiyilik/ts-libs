@@ -1,5 +1,11 @@
 # @beratiyilik/ts-utils
 
+## 0.1.0-alpha.1
+
+### Minor Changes
+
+- Add uuid, groupBy, groupByAdapter, multipleGroupBy, multipleGroupByAdapter utilities; add separator option to slugify
+
 ## 0.1.0-alpha.0
 
 ### Minor Changes

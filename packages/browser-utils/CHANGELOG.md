@@ -1,5 +1,16 @@
 # @beratiyilik/browser-utils
 
+## 0.1.0-alpha.1
+
+### Minor Changes
+
+- Add device detection utilities (prefersDarkMode, prefersReducedMotion, isTouchDevice, isOnline, getLanguage, getDevicePixelRatio); refactor storage with JSON serialization, boolean return, removeLocalStorageItem, clearLocalStorage
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @beratiyilik/ts-utils@0.1.0-alpha.1
+
 ## 0.1.0-alpha.0
 
 ### Minor Changes
