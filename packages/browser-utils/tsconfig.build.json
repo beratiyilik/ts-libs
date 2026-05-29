@@ -3,10 +3,11 @@
   "compilerOptions": {
     "lib": ["ES2024", "DOM", "DOM.Iterable"],
     "types": [],
+    "typeRoots": [],
     "outDir": "./dist",
     "rootDir": "./src",
     "noEmit": false
   },
   "include": ["src"],
-  "exclude": ["src/**/*.test.ts"]
+  "exclude": ["src/**/*.test.ts", "src/test-setup.ts"]
 }
