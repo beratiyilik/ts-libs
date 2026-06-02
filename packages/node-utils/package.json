@@ -1,0 +1,55 @@
+{
+  "name": "@beratiyilik/node-utils",
+  "version": "0.1.0-alpha.0",
+  "description": "Node.js-specific TypeScript utilities",
+  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "dev": "tsc -p tsconfig.build.json --watch",
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "vitest run",
+    "lint": "eslint .",
+    "check:publint": "publint",
+    "check:attw": "echo 'TODO: attw incompatible with Node 24 (untar.js DecompressionStream bug); fix: attw --pack . && rm *.tgz'",
+    "clean": "rm -rf dist node_modules .turbo *.tgz *.tsbuildinfo",
+    "prepublishOnly": "pnpm build && pnpm check:publint && pnpm check:attw"
+  },
+  "dependencies": {
+    "@beratiyilik/ts-utils": "workspace:*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/beratiyilik/ts-libs.git",
+    "directory": "packages/node-utils"
+  },
+  "homepage": "https://github.com/beratiyilik/ts-libs/tree/main/packages/node-utils#readme",
+  "bugs": {
+    "url": "https://github.com/beratiyilik/ts-libs/issues"
+  },
+  "author": "Berat Iyilik",
+  "license": "LGPL-3.0-or-later",
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "devDependencies": {
+    "@arethetypeswrong/cli": "^0.18.3",
+    "@types/node": "^25.9.1",
+    "publint": "^0.3.21",
+    "typescript": "^6.0.3",
+    "vitest": "^4.1.8"
+  }
+}
