@@ -5,8 +5,5 @@
     "@beratiyilik/browser-utils": "0.0.0",
     "@beratiyilik/ts-utils": "0.0.0"
   },
-  "changesets": [
-    "free-peas-stare",
-    "swift-maps-walk"
-  ]
+  "changesets": ["free-peas-stare", "swift-maps-walk"]
 }

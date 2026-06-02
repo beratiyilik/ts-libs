@@ -43,9 +43,9 @@
     "provenance": true
   },
   "devDependencies": {
-    "@arethetypeswrong/cli": "^0.18.2",
+    "@arethetypeswrong/cli": "^0.18.3",
     "publint": "^0.3.21",
     "typescript": "^6.0.3",
-    "vitest": "^4.1.7"
+    "vitest": "^4.1.8"
   }
 }

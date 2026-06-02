@@ -2,4 +2,6 @@ pnpm build
 pnpm typecheck
 pnpm test
 pnpm lint
+pnpm format:check
 pnpm check
+bash validate-conventions.sh
