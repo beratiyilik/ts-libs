@@ -46,6 +46,7 @@ Dependency graph: `browser-utils → ts-utils`. Cross-repo consumers (`react-lib
 ### Two TypeScript Configs Per Package
 
 Each package has two `tsconfig` files:
+
 - `tsconfig.json` — includes `src/` + `vitest.config.ts`, `noEmit: true`. Used by `typecheck` and the editor.
 - `tsconfig.build.json` — excludes test files, sets `outDir: ./dist`, `noEmit: false`. Used by `build`.
 

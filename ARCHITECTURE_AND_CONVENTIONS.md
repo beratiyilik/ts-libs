@@ -28,10 +28,10 @@
 
 ### Packages
 
-| package | depends on |
-|---|---|
-| `ts-utils` | none |
-| `node-utils` | `ts-utils` |
+| package         | depends on |
+| --------------- | ---------- |
+| `ts-utils`      | none       |
+| `node-utils`    | `ts-utils` |
 | `browser-utils` | `ts-utils` |
 
 ### Intra-repo dependency graph
